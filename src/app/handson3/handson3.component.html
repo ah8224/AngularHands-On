@@ -1,0 +1,39 @@
+<br>
+<br>
+<form #empForm="ngForm" class="block" name="empForm">
+<strong>Name:</strong>
+<br>
+<input type="text" name="name" [(ngModel)]="employee.EDetail.Name" #name="ngModel" required minlength="2"
+    maxlength="10">
+<div style="color: red;" *ngIf="name.errors?.required && name.touched">Name field is required</div>
+<div style="color: red;" *ngIf="name.errors?.minlength">Name must at least have 2 character</div>
+<div style="color: red;" *ngIf="name.errors?.maxlength">Name can have a maximum of 10 characters</div>
+<br>
+<!-- <div>{{name.value}}</div>
+<div>name.invalid - {{name.invalid}}</div>
+<div>name.touched - {{name.touched}}</div>
+<div>name.dirty - {{name.dirty}}</div>
+<div>name.errors.required - {{name.errors?.required}}</div>
+<div>name.errors.minlength - {{name.errors?.minlength | json}}</div>. -->
+<div><strong>Salary:</strong></div>
+<input type="number" name="salary" [(ngModel)]="employee.EDetail.Salary" #salary="ngModel" required>
+<div style="color: red;" *ngIf="salary.errors?.required && salary.touched">Salary field is required</div>
+<div><strong>Is Permanent or not?</strong></div>
+Yes<input type="radio" name="Permanent" [value]="true" [(ngModel)]="employee.EDetail.Permanent">
+No<input type="radio" name="Permanent" [value]="false" [(ngModel)]="employee.EDetail.Permanent">
+<br>
+<select name="did" (change)="setDP($event)" [(ngModel)]="employee.DDetail.Id">  
+    <option *ngFor="let i of departments" [value]='i.Id' [selected]='employee.DDetail.Id == i.Id'>{{i.Name}}</option>
+</select>   
+<div><button type="submit" [disabled]="!empForm.valid" (click)="Save()">Save</button></div>
+</form>
+
+
+<div class="block">
+    <strong>Employee Model</strong><br>
+    <pre>{{employee | json }}</pre>
+</div>
+<div class="block">
+    <strong>Angular Generated Form Model</strong><br>
+    <pre>{{empForm.value | json}}</pre>
+</div>

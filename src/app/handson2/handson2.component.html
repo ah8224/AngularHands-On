@@ -1,0 +1,22 @@
+<h2>Hands-on 2</h2>
+<h3>Employee Details:</h3>
+<ul *ngFor="let employee of EList">
+<li>ID: {{employee.EDetail.Id}}</li>
+<li>Name: {{employee.EDetail.Name}}</li>
+<li>Salary: {{employee.EDetail.Salary | currency:"INR":"symbol"}}</li>
+<li *ngIf=employee.EDetail.Permanent>Permanent: Yes</li>
+<li>Department ID: {{employee.DDetail.Id}}</li>
+<li>Department Name: {{employee.DDetail.Name}}</li>
+<li>Skills:
+    <table>
+        <tr>
+            <td>Skill ID</td>
+            <td>Skill Name</td>
+        </tr>
+        <tr *ngFor="let skill of employee.SDetail">
+            <td>{{skill.Id}}</td>
+            <td>{{skill.Name}}</td>
+        </tr>
+    </table>
+    <li>Date of Birth: {{employee.EDetail.DOB | date:"mediumDate"}}</li>
+</ul>

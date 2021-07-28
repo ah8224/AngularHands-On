@@ -1,0 +1,33 @@
+<h2>Login</h2>
+<form (submit)="login()" [formGroup]="LoginForm">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td>
+                <input type="text" name="user" formControlName="user">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="error" *ngIf="f.user.touched && f.user.errors?.required">Username is required.</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" #pass name="pass" formControlName="pass"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="error" *ngIf="f.pass.touched && f.pass.errors?.required">Password is required.</div>
+            </td>
+        </tr>
+        <tr >
+            <td class="error" colspan="2">{{errmsg}}</td>
+        </tr>
+        <tr >
+            <td><input type="submit" [disabled]="!LoginForm.valid" value="Login"></td>
+        </tr>
+    </table>
+</form>

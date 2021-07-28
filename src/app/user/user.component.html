@@ -1,0 +1,46 @@
+
+    <button class="btn" (click)="View()">GET</button>
+    <button class="btn" (click)="Post()">POST</button>
+    <button class="btn" (click)="Update()">PUT</button>
+    <button class="btn" (click)="Delete()">DELETE</button>
+    <button class="btn" (click)="Error()">Error Handling</button>
+    <hr>
+    <div class="block" *ngFor="let i of Ulist">
+    <ul>
+    <!-- <li>{{i.id}}</li> -->
+    <li>Email:{{i.email}}</li>
+    <li>Name:{{i.first_name}} {{i.last_name}}</li>
+    <li style="list-style-type: none;"><img src="{{i.avatar}}"></li>
+    </ul>
+    </div>
+    <div *ngIf="pst">
+        <table>
+            <tr><td>Name:</td><td><input type="text" [(ngModel)]="name"></td></tr>
+            <tr><td>Job:</td><td><input type="text" [(ngModel)]="job"></td></tr>
+            <tr><td><button (click)="createUser()">Create</button></td></tr>
+        </table>
+        <div>{{result|json}}</div>
+    </div>
+    <div *ngIf="upt">
+        <table>
+            <tr><td>Name:</td><td><input type="text" [(ngModel)]="name"></td></tr>
+            <tr><td>Job:</td><td><input type="text" [(ngModel)]="job"></td></tr>
+            <tr><td><button (click)="updateUser()">Update</button></td></tr>
+        </table>
+        <div>{{result|json}}</div>
+    </div>
+    <div *ngIf="del">
+        <table>
+            <tr><td>Id:</td><td><input type="text" [(ngModel)]="id"></td></tr>
+            <tr><td><button (click)="deleteUser()">Delete</button></td></tr>
+        </table>
+        <div>{{result|json}}</div>
+    </div>
+    <div *ngIf="error">
+        <table>
+            <tr><td>Email:</td><td><input type="text" [(ngModel)]="email"></td></tr>
+            <tr><td><button (click)="registerUser()">Register</button></td></tr>
+        </table>
+        <div>{{result|json}}</div>
+    </div>
+<!-- {{Ulist|json}} -->

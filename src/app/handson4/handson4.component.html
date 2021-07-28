@@ -1,0 +1,32 @@
+<br>
+<br>
+<form [formGroup]="empForm" class="block">
+<strong>Name:</strong>
+<br>
+<input type="text" name="name" formControlName="name">
+<div style="color: red;" *ngIf="f.name.errors?.required && f.name.touched">Name field is required</div>
+<div style="color: red;" *ngIf="f.name.errors?.minlength">Name must at least have 2 character</div>
+<div style="color: red;" *ngIf="f.name.errors?.maxlength">Name can have a maximum of 10 characters</div>
+<br>
+<div>
+<strong>Salary:</strong></div>
+<input type="number" name="salary" formControlName="salary">
+<div style="color: red;" *ngIf="f.salary.errors?.required && f.salary.touched">Salary field is required</div>
+<div><strong>Is Permanent or not?</strong></div>
+Yes<input type="radio" name="permanent" [value]="true" formControlName="permanent">
+No<input type="radio" name="permanent" [value]="false" formControlName="permanent">
+<br>
+<select name="did" (change) ="setDP($event)" formControlName="did">  
+    <option *ngFor="let i of departments" [value]='i.Id' [selected]='employee.DDetail.Id == i.Id'>{{i.Name}}</option>
+</select>
+<div><button type="submit" [disabled]="!empForm.valid" (click)="Save()">Save</button></div> 
+</form> 
+
+<div class="block">
+    <strong>Employee Model</strong><br>
+    <pre>{{employee | json }}</pre>
+</div>
+<div class="block">
+    <strong>Angular Generated Form Model</strong><br>
+    <pre>{{empForm.value | json}}</pre>
+</div>

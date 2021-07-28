@@ -1,0 +1,15 @@
+.block {
+    display: block;
+    width: 50%;
+    float: left;
+    height: 250px;
+    font: 1em sans-serif;
+} 
+.btn {
+    padding: 30px;
+    border-radius: 10px;
+    font: sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: steelblue;
+    margin-left: 1em;
+}

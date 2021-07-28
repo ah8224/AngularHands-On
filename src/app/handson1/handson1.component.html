@@ -1,0 +1,10 @@
+<h2>Hands-on 1</h2>
+<button (click)="fn1()">Click Me</button>
+<p>{{res1}}</p>
+<input type="number" [(ngModel)]="res2">
+<button (click)="fn2()">Increment</button>
+<br>
+<br>
+<button [disabled]="prop1" (click)="fn3()">-</button>
+<input type="number" [(ngModel)]="res3" readonly>
+<button (click)="fn4()">+</button>

@@ -1,0 +1,11 @@
+<br>
+<div>Search <input type="text" placeholder="Find by name" [(ngModel)]="term"></div>
+{{term}}
+<div>
+    <ul *ngFor="let employee of EList|searchPipe:term">
+        <li>ID: {{employee.EDetail.Id}}</li>
+        <li>Name: {{employee.EDetail.Name}}</li>
+        <li>Salary: {{employee.EDetail.Salary | currency:"INR":"symbol"}}</li>
+        <li><a [routerLink]="['/h4',employee.EDetail.Id]" >Edit</a></li>
+    </ul>
+</div>
